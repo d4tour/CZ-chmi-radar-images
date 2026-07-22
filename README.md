@@ -4,16 +4,15 @@ Generates a **side-by-side** radar image for any place name, with dark basemap.
 All radar data is fetched from **CHMI open data** (Czech Hydrometeorological Institute,
 `https://opendata.chmi.cz/`) under the **CC BY 4.0** licence.
 
-Used on Windows 11.
 
 ## Required files
 
-Copy these **3 files** (and optionally `fonts/` for bundled fonts) to any device:
+(optionally `fonts/` for bundled fonts) to any device:
 
 ```
 radar_server.py
 generate_place_image.py
-telegram_bot.py
+
 ```
 
 ## Install dependencies
@@ -29,7 +28,7 @@ pip install -r requirements.txt
 - Each generated image shows a bottom bar: station, city, and a disclaimer
   `Radar data: CHMI open data (CC BY 4.0)`.
 
-## Stations (Czechia only)
+## Stations 
 
 | ID   | Name    | Lat       | Lon        |
 |------|---------|-----------|------------|
@@ -47,8 +46,6 @@ Default: **DBZH + VRADH/VRAD** only. Add `--zdr`, `--cc`, `--w`, `--phidp` to in
 | W         | `vol_w` |
 | PHIDP     | `vol_phidp` |
 
-> **Note:** DBZH is now fetched as the full multi-angle volume, so `--elev` works
-> like for every other parameter.
 
 ## Basic usage
 
@@ -89,7 +86,7 @@ Available elevations: `0.1, 0.5, 0.9, 1.3, 1.7, 2.2, 3.2, 4.5, 6.3, 8.7, 13.7, 2
 
 ## Examples
 
-```powershell
+```
 # Gray-to-red reflectivity scale
 python generate_place_image.py "Praha" --scheme 2
 
@@ -120,7 +117,7 @@ python generate_place_image.py "Brno" --station czska --elev 0.5 --dbzh-min 0
 # Satellite basemap with on-map city labels
 python generate_place_image.py "Praha" --basemap satellite
 ```
-
+```
 ## Output
 
 - One panel per parameter (default: DBZH + VRADH; add `--zdr --cc --w --phidp` for more).
@@ -131,10 +128,6 @@ python generate_place_image.py "Praha" --basemap satellite
 
 ## Color legends
 
-Each panel's top bar shows a gradient from the parameter's minimum (left) to
-maximum (right). Hex swatches below are sampled at 0% / 25% / 50% / 75% / 100%
-of the range (low → high).
-
 | Parameter | Range | Gradient (low → high) |
 |-----------|-------|------------------------|
 | **DBZH** (scheme 1) | 0 – 70 dBZ | `#99D8FF` → `#24A741` → `#FFB600` → `#AF0026` → `#FFFFFF` |
@@ -144,7 +137,7 @@ of the range (low → high).
 | **CC** | 0.2 – 1.0 | `#313131` → `#1E4559` → `#276381` → `#3B8BB3` → `#EFF9FF` |
 | **W** | 0 – 10 m/s | `#090909` → `#1D3B9E` → `#76C6DB` → `#FFB979` → `#800909` |
 | **PHIDP** | 0 – 360 ° | `#313131` → `#099C21` → `#9F0C1D` → `#0B9E9F` → `#9F0909` |
-
+```
 Notes:
 - DBZH uses scheme 1 (green→white) by default; `--scheme 2` switches to the
   gray→red scale shown above.
