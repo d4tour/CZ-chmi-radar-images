@@ -1,5 +1,4 @@
-# Secrets / local config (contains bot token)
-config.py
+
 
 # Tile + data caches
 .cache/
