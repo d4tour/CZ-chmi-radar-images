@@ -1,0 +1,20 @@
+# Secrets / local config (contains bot token)
+config.py
+
+# Tile + data caches
+.cache/
+
+# Downloaded radar HDF5 volumes
+*.hdf
+
+# Generated images
+*.png
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Bundled font (proprietary, not distributed)
+fonts/*.ttf
+
+
